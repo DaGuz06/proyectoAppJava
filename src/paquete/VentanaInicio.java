@@ -61,7 +61,7 @@ public class VentanaInicio extends javax.swing.JFrame {
 		
 		JButton btn_Sesion_1 = new JButton("Continuar sin cuenta");
 		btn_Sesion_1.setFont(new Font("Arial", Font.PLAIN, 15));
-		btn_Sesion_1.setBounds(138, 140, 174, 23);
+		btn_Sesion_1.setBounds(138, 153, 174, 23);
 		contentPane.add(btn_Sesion_1);
 		
 		 btn_Sesion.addActionListener(new ActionListener() {

@@ -1,17 +1,18 @@
-package paquete;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Calendar;
+import java.util.TimeZone;
 
 /**
- * Clase para la conexión con una base de datos PostgreSQL
+ * Clase para la conexión con una base de datos MySQL
  *
- * @author Francisco Jesús Delgado Almirón cambiado por mi para PostgreSQL
+ * @author Francisco Jesús Delgado Almirón
  */
-public class ConexionPostgreSQL {
+public class ConexionMySQL {
 
     // Base de datos a la que nos conectamos
     private String BD;
@@ -21,8 +22,10 @@ public class ConexionPostgreSQL {
     private String PASS;
     // Objeto donde se almacenará nuestra conexión
     private Connection connection;
-    // Indica que está en localhost o una URL externa
+    // Indica que está en localhost
     private String HOST;
+    // Zona horaria
+    private TimeZone zonahoraria;
 
     /**
      * Constructor de la clase
@@ -31,8 +34,8 @@ public class ConexionPostgreSQL {
      * @param pass Contraseña del usuario
      * @param bd Base de datos a la que nos conectamos
      */
-    public ConexionPostgreSQL(String usuario, String pass, String bd) {
-        HOST = "ep-long-union-a2ktfxg0-pooler.eu-central-1.aws.neon.tech";
+    public ConexionMySQL(String usuario, String pass, String bd) {
+        HOST = "localhost";
         USUARIO = usuario;
         PASS = pass;
         BD = bd;
@@ -40,15 +43,15 @@ public class ConexionPostgreSQL {
     }
 
     /**
-     * Comprueba que el driver de PostgreSQL esté correctamente integrado
+     * Comprueba que el driver de MySQL esté correctamente integrado
      *
      * @throws SQLException Se lanzará cuando haya un fallo con la base de datos
      */
     private void registrarDriver() throws SQLException {
         try {
-            Class.forName("org.postgresql.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
         } catch (ClassNotFoundException e) {
-            throw new SQLException("Error al conectar con PostgreSQL: " + e.getMessage());
+            throw new SQLException("Error al conectar con MySQL: " + e.getMessage());
         }
     }
 
@@ -60,7 +63,12 @@ public class ConexionPostgreSQL {
     public void conectar() throws SQLException {
         if (connection == null || connection.isClosed()) {
             registrarDriver();
-            connection = DriverManager.getConnection("jdbc:postgresql://" + HOST + "/" + BD, USUARIO, PASS);
+            // Obtengo la zona horaria
+            Calendar now = Calendar.getInstance();
+            zonahoraria = now.getTimeZone();
+            connection = (Connection) DriverManager.getConnection("jdbc:mysql://" + HOST + "/" + BD + "?user="
+                    + USUARIO + "&password=" + PASS + "&useLegacyDatetimeCode=false&serverTimezone="
+                    + zonahoraria.getID());
         }
     }
 
