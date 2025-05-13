@@ -49,40 +49,48 @@ public class VentanaSesion extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		//CAMPOS DE TEXTO
+		//Campo de texto usuario
 		txtNombre = new JTextField();
 		txtNombre.setBounds(216, 70, 86, 20);
 		contentPane.add(txtNombre);
 		txtNombre.setColumns(10);
-		
-		JLabel lblNewLabel = new JLabel("Usuario");
-		lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 16));
-		lblNewLabel.setBounds(133, 61, 54, 35);
-		contentPane.add(lblNewLabel);
-		
+		//Campo de texto contraseña
 		txtPass = new JPasswordField();
 		txtPass.setBounds(216, 116, 86, 20);
 		contentPane.add(txtPass);
 		
+		//LABELS
+		//Label del campo de texto usuario
+		JLabel lblNewLabel = new JLabel("Usuario");
+		lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 16));
+		lblNewLabel.setBounds(133, 61, 54, 35);
+		contentPane.add(lblNewLabel);
+		//Label del campo de texto Contraseña
 		JLabel lblContrasea = new JLabel("Contraseña");
 		lblContrasea.setFont(new Font("Arial", Font.PLAIN, 16));
 		lblContrasea.setBounds(106, 107, 81, 35);
 		contentPane.add(lblContrasea);
-		
+		//Label titulo
 		JLabel lblIniciarSesin = new JLabel("Iniciar sesión");
 		lblIniciarSesin.setFont(new Font("Arial", Font.PLAIN, 16));
 		lblIniciarSesin.setBounds(165, 15, 91, 35);
 		contentPane.add(lblIniciarSesin);
 		
+		//BOTONES
+		//Boton continuar
 		JButton btn_Continuar = new JButton("Continuar");
 		btn_Continuar.setFont(new Font("Arial", Font.PLAIN, 13));
 		btn_Continuar.setBounds(239, 173, 89, 23);
 		contentPane.add(btn_Continuar);
-		
+		//Boton para ir hacia atrás
 		JButton btn_Atras = new JButton("Atrás");
 		btn_Atras.setFont(new Font("Arial", Font.PLAIN, 13));
 		btn_Atras.setBounds(106, 173, 89, 23);
 		contentPane.add(btn_Atras);
 		
+		//METODOS
+		//Metodo del boton "Ir hacia atras" FUNCIONA
 		 btn_Atras.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
 	                VentanaInicio ventanaInicio = new VentanaInicio();

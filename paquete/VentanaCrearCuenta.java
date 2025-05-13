@@ -49,38 +49,44 @@ public class VentanaCrearCuenta extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JButton btn_Atras = new JButton("Atrás");       
-		btn_Atras.setFont(new Font("Arial", Font.PLAIN, 14));
-		btn_Atras.setBounds(159, 171, 89, 23);
-		contentPane.add(btn_Atras);
-		
+		//Campos de texto
+		//Campo de texto Usuario
 		JTextArea textArea = new JTextArea();
 		textArea.setBounds(212, 76, 105, 22);
 		contentPane.add(textArea);
-		
+		//Campo de texto Contraseña
 		passwordField_1 = new JPasswordField();
 		passwordField_1.setBounds(214, 121, 103, 20);
 		contentPane.add(passwordField_1);
 		
+		//LABELS
+		//Label campo usuario
 		JLabel lblNewLabel = new JLabel("Usuario");
 		lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 16));
 		lblNewLabel.setBounds(99, 79, 54, 14);
 		contentPane.add(lblNewLabel);
-		
+		//Label campo contraseña
 		JLabel lblContrasea = new JLabel("Contraseña");
 		lblContrasea.setFont(new Font("Arial", Font.PLAIN, 16));
 		lblContrasea.setBounds(99, 124, 81, 14);
 		contentPane.add(lblContrasea);
-		
+		//Label titulo Crear Cuenta
 		JLabel lblCrearCuenta = new JLabel("Crear cuenta");
 		lblCrearCuenta.setFont(new Font("Arial", Font.PLAIN, 20));
 		lblCrearCuenta.setBounds(145, 21, 117, 25);
 		contentPane.add(lblCrearCuenta);
 		
+		//BOTONES
+		//Boton crear cuenta
 		JButton btn_Crear = new JButton("Crear");
 		btn_Crear.setFont(new Font("Arial", Font.PLAIN, 14));
 		btn_Crear.setBounds(159, 205, 89, 23);
 		contentPane.add(btn_Crear);
+		//Boton ir hacia atrás
+		JButton btn_Atras = new JButton("Atrás");       
+		btn_Atras.setFont(new Font("Arial", Font.PLAIN, 14));
+		btn_Atras.setBounds(159, 171, 89, 23);
+		contentPane.add(btn_Atras);
 		
 		
 		btn_Atras.addActionListener(new ActionListener() {

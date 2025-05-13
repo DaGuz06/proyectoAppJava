@@ -44,26 +44,33 @@ public class VentanaInicio extends javax.swing.JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		//LABEL
+		//Label del titulo
 		JLabel lb_titulo = new JLabel("IPinfo Crawler");
 		lb_titulo.setFont(new Font("Arial", Font.PLAIN, 17));
 		lb_titulo.setBounds(171, 11, 104, 63);
 		contentPane.add(lb_titulo);
 		
+		//BOTONES
+		//Boton para redirigir a la ventana de Inicio de sesion
 		JButton btn_Sesion = new JButton("Iniciar sesión");
 		btn_Sesion.setFont(new Font("Arial", Font.PLAIN, 15));
 		btn_Sesion.setBounds(60, 89, 123, 23);
 		contentPane.add(btn_Sesion);
-		
+		//Boton para redirigir a la ventana de Crear cuenta
 		JButton btn_Crear = new JButton("Crear cuenta");
 		btn_Crear.setFont(new Font("Arial", Font.PLAIN, 15));
 		btn_Crear.setBounds(257, 89, 123, 23);
 		contentPane.add(btn_Crear);
-		
+		//Boton para continuar sin cuenta (no puede guardar ni tiene historial)
 		JButton btn_Sesion_1 = new JButton("Continuar sin cuenta");
 		btn_Sesion_1.setFont(new Font("Arial", Font.PLAIN, 15));
 		btn_Sesion_1.setBounds(138, 153, 174, 23);
 		contentPane.add(btn_Sesion_1);
 		
+		
+		//Metodos para los botones
+		//Metodo del boton "Iniciar Sesion" FUNCIONA
 		 btn_Sesion.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
 	                VentanaSesion ventanaSesion = new VentanaSesion();
@@ -71,7 +78,7 @@ public class VentanaInicio extends javax.swing.JFrame {
 	                dispose();
 	            }
 	        });
-		 
+		//Metodo del boton "Crear Cuenta" FUNCIONA
 		 btn_Crear.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
 	                VentanaCrearCuenta ventanaCrearCuenta = new VentanaCrearCuenta();
