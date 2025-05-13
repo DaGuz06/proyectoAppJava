@@ -43,26 +43,34 @@ public class MenuInicio extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JButton btnGuardar = new JButton("Historial");
-		btnGuardar.setBounds(180, 174, 89, 23);
-		contentPane.add(btnGuardar);
+		//Botones
+		//Boton de historial
+		JButton btnHistorial = new JButton("Historial");
+		btnHistorial.setBounds(180, 174, 89, 23);
+		contentPane.add(btnHistorial);
+		//Boton mostrar resultado
+		JButton btnMostrar = new JButton("Mostrar resultado");
+		btnMostrar.setBounds(149, 140, 152, 23);
+		contentPane.add(btnMostrar);
 		
-		JLabel lblNewLabel = new JLabel("IpInfo");
-		lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 20));
-		lblNewLabel.setBounds(195, 11, 50, 41);
-		contentPane.add(lblNewLabel);
+		//LABELS
+		//Label titulo
+		JLabel lblTitulo = new JLabel("IpInfo");
+		lblTitulo.setFont(new Font("Arial", Font.PLAIN, 20));
+		lblTitulo.setBounds(195, 11, 50, 41);
+		contentPane.add(lblTitulo);
+		//Label Introduzca la IP
+		JLabel lblIntroduzca = new JLabel("Introduzca la IP");
+		lblIntroduzca.setFont(new Font("Arial", Font.PLAIN, 16));
+		lblIntroduzca.setBounds(65, 93, 111, 14);
+		contentPane.add(lblIntroduzca);
 		
+		//Campo de texto
+		//Campo de ingresar IP
 		JTextArea txtIngresar = new JTextArea();
 		txtIngresar.setBounds(234, 88, 127, 22);
 		contentPane.add(txtIngresar);
 		
-		JLabel lblNewLabel_1 = new JLabel("Introduzca la IP");
-		lblNewLabel_1.setFont(new Font("Arial", Font.PLAIN, 16));
-		lblNewLabel_1.setBounds(65, 93, 111, 14);
-		contentPane.add(lblNewLabel_1);
 		
-		JButton btnContinuar = new JButton("Mostrar resultado");
-		btnContinuar.setBounds(163, 136, 117, 23);
-		contentPane.add(btnContinuar);
 	}
 }
