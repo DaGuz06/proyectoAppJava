@@ -7,14 +7,18 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
 
-public class VentanaSesion extends JFrame {
+public class Ventana_IniciarSesion extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -28,7 +32,7 @@ public class VentanaSesion extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					VentanaSesion frame = new VentanaSesion();
+					Ventana_IniciarSesion frame = new Ventana_IniciarSesion();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -40,14 +44,34 @@ public class VentanaSesion extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public VentanaSesion() {
+	public Ventana_IniciarSesion() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-
+		setTitle("GeoIpScan");
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		
+		//Cambio icono NO FUNCIONA
+		/*try {
+		    URL imageUrl = getClass().getResource("/fotos/logoApp.jpeg");
+		    
+		    if (imageUrl == null) {
+		        throw new RuntimeException("No se pudo encontrar la imagen: /fotos/logoApp.jpeg");
+		    }
+		    
+		    // Opción 1: Usando ImageIO
+		    BufferedImage icono = ImageIO.read(imageUrl);
+		    setIconImage(icono);
+		    
+		    // Opción 2:Usando Toolkit
+		    // Image icono = Toolkit.getDefaultToolkit().getImage(imageUrl);
+		    // setIconImage(icono);
+		    
+		} catch (IOException e) {
+		    System.err.println("Error al cargar el icono de la aplicación: " + e.getMessage());
+		}*/
 		
 		//CAMPOS DE TEXTO
 		//Campo de texto usuario
@@ -93,11 +117,44 @@ public class VentanaSesion extends JFrame {
 		//Metodo del boton "Ir hacia atras" FUNCIONA
 		 btn_Atras.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
-	                VentanaInicio ventanaInicio = new VentanaInicio();
+	                Ventana_Idenificarse ventanaInicio = new Ventana_Idenificarse();
 	                ventanaInicio.setVisible(true);
 	                dispose();
 	            }
 	        });
+		//Metodo del boton "Continuar". recorre la base de datos en busca del usuario y contraseña. FUNCIONA
+		 btn_Continuar.addActionListener(new ActionListener() {
+			 public void actionPerformed(ActionEvent e) {
+				 String usuario = txtNombre.getText();
+				 String contrasena = txtPass.getText();
+				 
+				 //He comprobado que intercepta el campo de la contraseña y funciona
+				 //System.out.print(usuario);
+				 //System.out.print(contrasena);
+				 
+				 try {
+			            ClaseConexion.conexion.conectar();
+			            String SQL = "SELECT * FROM tb_user WHERE nombre_usuario = '"+usuario+"' AND contrasena = '"+contrasena+"'";
+			            ClaseConexion.conexion.ejecutarSelect(SQL);
+			            //ResultSet es una clase para analizar consultas select
+			            ResultSet rs =ClaseConexion.conexion.ejecutarSelect(SQL);
+			            if(rs.next()) {
+			            	//Si el usuario y contraseña son validos se ejecuta este bloque
+			            	Ventana_IntroducirIP menuInicio = new Ventana_IntroducirIP();
+			                menuInicio.setVisible(true);
+			                dispose();
+			            }else {
+			            	//Si el usuario y contraseña son validos no se ejecuta este bloque
+			            	JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrecto");
+			            }
+			            
+			            ClaseConexion.conexion.desconectar();
+				        
+				    } catch (SQLException e2) {
+				        e2.printStackTrace();
+				    }
+			 }
+		 });
 			
 	}
 }

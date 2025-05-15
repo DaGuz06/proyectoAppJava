@@ -18,7 +18,7 @@ public class ClaseMain {
             
             //DESCOMENTAR SI QUIERES PROBAR RAPIDO SI FUNCIONA
             /*ClaseConexion.conexion.conectar();
-            String SQL = "INSERT INTO tb_usuarios (`user`, `password`) VALUES ('Lolo', 'admin')";
+            String SQL = "INSERT INTO tb_user (`nombre_usuario`, `contrasena`) VALUES ('prueba', 'prueba')";
             ClaseConexion.conexion.ejecutarInsertDeleteUpdate(SQL);
             ClaseConexion.conexion.desconectar();*/
 	        
@@ -30,7 +30,7 @@ public class ClaseMain {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                VentanaInicio ventana = new VentanaInicio();
+                Ventana_Idenificarse ventana = new Ventana_Idenificarse();
                 ventana.setVisible(true);
             }
         });
