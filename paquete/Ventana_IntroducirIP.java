@@ -63,6 +63,9 @@ public class Ventana_IntroducirIP extends JFrame {
 		//Boton de historial
 		JButton btnHistorial = new JButton("Historial");
 		btnHistorial.setBounds(330, 274, 89, 23);
+		if(Ventana_Idenificarse.pulsado == true) {
+			btnHistorial.setVisible(false);
+		}
 		contentPane.add(btnHistorial);
 		//Boton mostrar resultado
 		JButton btnMostrar = new JButton("Mostrar resultado");
@@ -112,6 +115,7 @@ public class Ventana_IntroducirIP extends JFrame {
                 dispose();
             }
         });
+		
 		
 		btnMostrar.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {

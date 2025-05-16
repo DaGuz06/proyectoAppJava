@@ -22,7 +22,7 @@ public class Ventana_IniciarSesion extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JTextField txtNombre;
+	public static JTextField txtNombre;
 	private JPasswordField txtPass;
 
 	/**
@@ -155,6 +155,8 @@ public class Ventana_IniciarSesion extends JFrame {
 				    }
 			 }
 		 });
+		 
+		 //CRER UN PUBLIC PARA EL METODO 
 			
 	}
 }

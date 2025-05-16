@@ -15,6 +15,8 @@ public class Ventana_Idenificarse extends JFrame {
 
     private static final long serialVersionUID = 1L;
     private JPanel contentPane;
+    
+    public static boolean pulsado = false;
 
     public static void main(String[] args) {
         EventQueue.invokeLater(() -> {
@@ -84,6 +86,7 @@ public class Ventana_Idenificarse extends JFrame {
 
         btnSinCuenta.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+            	pulsado = true;
                 Ventana_IntroducirIP menuInicio = new Ventana_IntroducirIP();
                 menuInicio.setVisible(true);
                 dispose();

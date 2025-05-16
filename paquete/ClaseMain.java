@@ -16,7 +16,7 @@ public class ClaseMain {
             System.out.println("Conexión exitosa!");
             ClaseConexion.conexion.desconectar();
             
-            //DESCOMENTAR SI QUIERES PROBAR RAPIDO SI FUNCIONA
+            //DESCOMENTAR SI QUIERES PROBAR RAPIDO SI FUNCIONA la insercion de datos en la BBDD
             /*ClaseConexion.conexion.conectar();
             String SQL = "INSERT INTO tb_user (`nombre_usuario`, `contrasena`) VALUES ('prueba', 'prueba')";
             ClaseConexion.conexion.ejecutarInsertDeleteUpdate(SQL);
