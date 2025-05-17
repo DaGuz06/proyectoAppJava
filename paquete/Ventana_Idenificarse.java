@@ -32,7 +32,7 @@ public class Ventana_Idenificarse extends JFrame {
     public Ventana_Idenificarse() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(450, 300);
-        setTitle("GeoIpScan");
+        setTitle("IP Tracker");
 
         setLocationRelativeTo(null);
         setResizable(true);
@@ -44,7 +44,7 @@ public class Ventana_Idenificarse extends JFrame {
         setContentPane(contentPane);
 
         // Título
-        JLabel lb_titulo = new JLabel("GeoIpScan");
+        JLabel lb_titulo = new JLabel("IP Tracker");
         lb_titulo.setFont(new Font("Arial", Font.PLAIN, 20));
         lb_titulo.setBounds(170, 30, 200, 30);
         contentPane.add(lb_titulo);

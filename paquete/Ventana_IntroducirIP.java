@@ -16,6 +16,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.sql.SQLException;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
@@ -78,25 +79,34 @@ public class Ventana_IntroducirIP extends JFrame {
 		btn_Atras.setFont(new Font("Arial", Font.PLAIN, 14));
 		contentPane.add(btn_Atras);
 		
+		//Boton guardar IP en la bbdd
+		JButton btnGuardar = new JButton("Guardar");
+		btnGuardar.setBounds(330, 63, 89, 24);
+		contentPane.add(btnGuardar);
+		
 		//LABELS
 		//Label titulo
-		JLabel lblTitulo = new JLabel("GeoIpScan");
+		JLabel lblTitulo = new JLabel("IP Tracker");
 		lblTitulo.setFont(new Font("Arial", Font.PLAIN, 20));
 		lblTitulo.setBounds(189, 11, 132, 41);
 		contentPane.add(lblTitulo);
 		//Label Introduzca la IP
 		JLabel lblIntroduzca = new JLabel("Introduzca la IP:");
 		lblIntroduzca.setFont(new Font("Arial", Font.PLAIN, 16));
-		lblIntroduzca.setBounds(95, 66, 127, 14);
+		lblIntroduzca.setBounds(69, 66, 127, 14);
 		contentPane.add(lblIntroduzca);
+		//Label donde se pondrá la foto
+		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel.setBounds(112, 27, 46, 14);
+		contentPane.add(lblNewLabel);
 		
-		//Campo de texto
+		//Campos de texto
 		//Campo de ingresar IP
 		JTextArea txtIngresar = new JTextArea();
 		txtIngresar.setBackground(new Color(191, 191, 191));
-		txtIngresar.setBounds(243, 63, 127, 22);
+		txtIngresar.setBounds(189, 63, 127, 22);
 		contentPane.add(txtIngresar);
-		
+		//Campo donde ver el resultado de la busqueda
 		JTextArea areaResultado = new JTextArea();
 		areaResultado.setBackground(new Color(191, 191, 191));
 		areaResultado.setBounds(69, 91, 350, 149);
@@ -104,10 +114,9 @@ public class Ventana_IntroducirIP extends JFrame {
 		contentPane.add(areaResultado);
 		areaResultado.setEditable(false);
 		
-		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setBounds(112, 27, 46, 14);
-		contentPane.add(lblNewLabel);
 		
+		//METODOS
+		//Metodo del boton para ir hacia atras FUNCIONA
 		btn_Atras.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 Ventana_Idenificarse Ventana_Registrarse = new Ventana_Idenificarse();
@@ -116,13 +125,15 @@ public class Ventana_IntroducirIP extends JFrame {
             }
         });
 		
-		
+		//Metodo del boton para mostrar la informacion FUNCIONA
 		btnMostrar.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
+		    	//se obtiene la ip escrita por el usuario
 		        String ip = txtIngresar.getText();
 		        String urlStr = "https://ipinfo.io/" + ip + "/json";
 
 		        try {
+		        	//obtener el json resultado de la web ipinfo.io con GET
 		            URL url = new URL(urlStr);
 		            HttpURLConnection con = (HttpURLConnection) url.openConnection();
 		            con.setRequestMethod("GET");
@@ -136,9 +147,9 @@ public class Ventana_IntroducirIP extends JFrame {
 		            in.close();
 		            con.disconnect();
 
-		            // Parsear JSON
+		            // Mostrar la informacion obtenida de la web y formateo del resultado
 		            JSONObject json = new JSONObject(contenido.toString());
-
+		            
 		            String resultado = "";
 		            resultado += "IP: " + json.optString("ip", "N/A") + "\n";
 		            resultado += "Hostname: " + json.optString("hostname", "N/A") + "\n";
@@ -148,7 +159,8 @@ public class Ventana_IntroducirIP extends JFrame {
 		            resultado += "Organización: " + json.optString("org", "N/A") + "\n";
 		            resultado += "Zona horaria: " + json.optString("timezone", "N/A");
 		            
-		            String sentenciaSQL = "INSERT INTO tb_ip (`nombre_usuario`, `contrasena`) VALUES ('prueba', 'prueba')";
+		            //no se quien ha escrito esto pero estaba ahí
+		            //String sentenciaSQL = "INSERT INTO tb_ip (`nombre_usuario`, `contrasena`) VALUES ('prueba', 'prueba')";
 
 		            areaResultado.setText(resultado);
 
@@ -158,6 +170,27 @@ public class Ventana_IntroducirIP extends JFrame {
 		        }
 		    }
 		});
+		
+		//Metodo del boton guardar DESARROLLO
+		btnGuardar.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+	            
+            	int usuarioID;
+	            try {
+		            ClaseConexion.conexion.conectar();
+		            
+		            
+		            
+		            String sentenciaSQL = "INSERT INTO historial_ips (`usuario_id`, `ip`, `hostname`, `ciudad`, `pais`, `coordenadas`) VALUES ('prueba', 'prueba')";
+		            ClaseConexion.conexion.ejecutarInsertDeleteUpdate(sentenciaSQL);
+		            ClaseConexion.conexion.desconectar();
+			        
+			    } catch (SQLException e1) {
+			        e1.printStackTrace();
+			    }
+                dispose();
+            }
+        });
 
 		
 		
