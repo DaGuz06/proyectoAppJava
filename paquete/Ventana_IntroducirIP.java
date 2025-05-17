@@ -9,6 +9,7 @@ import javax.swing.border.EmptyBorder;
 import org.json.JSONObject;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.Insets;
@@ -16,6 +17,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -150,14 +152,22 @@ public class Ventana_IntroducirIP extends JFrame {
 		            // Mostrar la informacion obtenida de la web y formateo del resultado
 		            JSONObject json = new JSONObject(contenido.toString());
 		            
+		            // Se guardan los datos en variables
+		            String ipActual = json.optString("ip", "N/A");
+		            String hostnameActual = json.optString("hostname", "N/A");
+		            String ciudadActual = json.optString("city", "N/A");
+		            String paisActual = json.optString("country", "N/A");
+		            String locActual = json.optString("loc", "N/A");
+
+		            // Se muestra los datos en pantalla
 		            String resultado = "";
-		            resultado += "IP: " + json.optString("ip", "N/A") + "\n";
-		            resultado += "Hostname: " + json.optString("hostname", "N/A") + "\n";
-		            resultado += "Ciudad: " + json.optString("city", "N/A") + "\n";
-		            resultado += "País: " + json.optString("country", "N/A") + "\n";
-		            resultado += "Ubicación: " + json.optString("loc", "N/A") + "\n";
-		            resultado += "Organización: " + json.optString("org", "N/A") + "\n";
-		            resultado += "Zona horaria: " + json.optString("timezone", "N/A");
+		            resultado += "IP: " + ipActual + "\n";
+		            resultado += "Hostname: " + hostnameActual + "\n";
+		            resultado += "Ciudad: " + ciudadActual + "\n";
+		            resultado += "País: " + paisActual + "\n";
+		            resultado += "Ubicación: " + locActual;
+
+		            areaResultado.setText(resultado);
 		            
 		            //no se quien ha escrito esto pero estaba ahí
 		            //String sentenciaSQL = "INSERT INTO tb_ip (`nombre_usuario`, `contrasena`) VALUES ('prueba', 'prueba')";
@@ -175,14 +185,20 @@ public class Ventana_IntroducirIP extends JFrame {
 		btnGuardar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
 	            
-            	int usuarioID;
+            	String usuarioID;
+            	String usuario = Ventana_IniciarSesion.txtNombre.getText();
+            	String contrasena = Ventana_IniciarSesion.txtPass.getText();
+            	
 	            try {
 		            ClaseConexion.conexion.conectar();
 		            
+		            usuarioID = "SELECT id FROM tb_user WHERE nombre_usuario = '"+usuario+"' AND contrasena = '"+contrasena+"'";
+		            ClaseConexion.conexion.ejecutarSelect(usuarioID);
 		            
 		            
-		            String sentenciaSQL = "INSERT INTO historial_ips (`usuario_id`, `ip`, `hostname`, `ciudad`, `pais`, `coordenadas`) VALUES ('prueba', 'prueba')";
-		            ClaseConexion.conexion.ejecutarInsertDeleteUpdate(sentenciaSQL);
+		            //String sentenciaSQL = "INSERT INTO historial_ips (`usuario_id`, `ip`, `hostname`, `ciudad`, `pais`, `coordenadas`) "
+		            		//+ "VALUES ('"+usuarioID+"', '"+txtIngresar.getText()+"', '"++"')";
+		            //ClaseConexion.conexion.ejecutarInsertDeleteUpdate(sentenciaSQL);
 		            ClaseConexion.conexion.desconectar();
 			        
 			    } catch (SQLException e1) {
