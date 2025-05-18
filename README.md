@@ -39,4 +39,4 @@ Aplicación de escritorio desarrollada en **Java** con interfaz gráfica **Swing
 
 ## 🧑‍💻 Desarrolladores
 
-Desarrollado por **David** y Lolo, estudiantes de desarrollo de aplicaciones web.
+Desarrollado por **David** y **Lolo**, estudiantes de desarrollo de aplicaciones web.
