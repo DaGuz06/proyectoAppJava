@@ -45,7 +45,7 @@ public class VentanaCrearCuenta extends JFrame {
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setTitle("GeoIpScan");
+		setTitle("IP Tracker");
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
