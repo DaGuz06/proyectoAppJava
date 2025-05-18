@@ -14,6 +14,7 @@ import java.sql.SQLException;
 
 import javax.swing.JTextArea;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 public class VentanaCrearCuenta extends JFrame {
 
@@ -112,6 +113,12 @@ public class VentanaCrearCuenta extends JFrame {
 			            String SQL = "INSERT INTO tb_user (`nombre_usuario`, `contrasena`) VALUES ('"+usuario+"', '"+contrasena+"')";
 			            ClaseConexion.conexion.ejecutarInsertDeleteUpdate(SQL);
 			            ClaseConexion.conexion.desconectar();
+			            
+			            JOptionPane.showMessageDialog(null, "Cuenta creada correctamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+			            
+			            Ventana_IniciarSesion Ventana_IniciarSesion = new Ventana_IniciarSesion();
+			            Ventana_IniciarSesion.setVisible(true);
+		                dispose();
 				        
 				    } catch (SQLException e1) {
 				        e1.printStackTrace();
