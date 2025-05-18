@@ -23,7 +23,7 @@ public class Ventana_Historial extends JFrame {
     }
 
     public Ventana_Historial() {
-        setTitle("IP Tracker");
+        setTitle("Historial de Búsquedas");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setBounds(100, 100, 800, 500);
         contentPane = new JPanel();
@@ -32,7 +32,7 @@ public class Ventana_Historial extends JFrame {
         contentPane.setLayout(new BorderLayout(0, 10));
 
         // Título
-        JLabel lblTitulo = new JLabel("Historial de busquedas");
+        JLabel lblTitulo = new JLabel("Historial de Búsquedas");
         lblTitulo.setFont(new Font("Arial", Font.BOLD, 18));
         lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
         contentPane.add(lblTitulo, BorderLayout.NORTH);
@@ -58,13 +58,17 @@ public class Ventana_Historial extends JFrame {
         model.addColumn("Ciudad");
         model.addColumn("País");
         model.addColumn("Coordenadas");
-        model.addColumn("Fecha de guardado");
+        model.addColumn("Fecha");
 
         JScrollPane scrollPane = new JScrollPane(table);
         contentPane.add(scrollPane, BorderLayout.CENTER);
 
-        // Panel de botones (solo con Eliminar y Volver)
+        // Panel de botones
         JPanel panelBotones = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
+        
+        JButton btnActualizar = new JButton("Actualizar");
+        btnActualizar.addActionListener(e -> cargarHistorial());
+        panelBotones.add(btnActualizar);
         
         JButton btnEliminar = new JButton("Eliminar seleccionado");
         btnEliminar.addActionListener(e -> eliminarRegistro());
@@ -111,7 +115,7 @@ public class Ventana_Historial extends JFrame {
                         rs.getString("ciudad"),
                         rs.getString("pais"),
                         rs.getString("coordenadas"),
-                        rs.getTimestamp("s")
+                        rs.getTimestamp("fecha")
                     });
                 }
             }
@@ -146,8 +150,7 @@ public class Ventana_Historial extends JFrame {
                 ClaseConexion.conexion.ejecutarInsertDeleteUpdate(consulta);
                 ClaseConexion.conexion.desconectar();
                 
-                // Volver a cargar el historial después de eliminar
-                cargarHistorial();
+                cargarHistorial(); // Refrescar la tabla
                 JOptionPane.showMessageDialog(this, "Registro eliminado correctamente");
             } catch (Exception e) {
                 e.printStackTrace();
