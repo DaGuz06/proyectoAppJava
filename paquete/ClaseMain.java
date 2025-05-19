@@ -26,11 +26,11 @@ public class ClaseMain {
 	        e.printStackTrace();
 	    }
 		
-	    //Lama a la ventana INICIO
+	    //Llama a la ventana INICIO
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                Ventana_Idenificarse ventana = new Ventana_Idenificarse();
+                inicio ventana = new inicio();
                 ventana.setVisible(true);
             }
         });
