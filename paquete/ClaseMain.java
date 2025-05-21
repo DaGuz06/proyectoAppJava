@@ -30,7 +30,7 @@ public class ClaseMain {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                inicio ventana = new inicio();
+                ClaseInicio ventana = new ClaseInicio();
                 ventana.setVisible(true);
             }
         });

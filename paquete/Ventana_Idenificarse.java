@@ -10,6 +10,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.ImageIcon;
+import java.awt.Color;
 
 public class Ventana_Idenificarse extends JFrame {
 
@@ -35,7 +37,7 @@ public class Ventana_Idenificarse extends JFrame {
         setTitle("IP Tracker");
 
         setLocationRelativeTo(null);
-        setResizable(true);
+        setResizable(false);
 
         // Panel principal con diseño absoluto
         contentPane = new JPanel();
@@ -45,27 +47,33 @@ public class Ventana_Idenificarse extends JFrame {
 
         // Título
         JLabel lb_titulo = new JLabel("IP Tracker");
+        lb_titulo.setForeground(new Color(255, 255, 255));
         lb_titulo.setFont(new Font("Arial", Font.PLAIN, 20));
-        lb_titulo.setBounds(170, 30, 200, 30);
+        lb_titulo.setBounds(56, 26, 105, 30);
         contentPane.add(lb_titulo);
 
         // Botón Iniciar sesión
         JButton btn_Sesion = new JButton("Iniciar sesión");
         btn_Sesion.setFont(new Font("Arial", Font.PLAIN, 15));
-        btn_Sesion.setBounds(150, 80, 150, 30);
+        btn_Sesion.setBounds(10, 80, 190, 30);
         contentPane.add(btn_Sesion);
 
         // Botón Crear cuenta
         JButton btn_Crear = new JButton("Crear cuenta");
         btn_Crear.setFont(new Font("Arial", Font.PLAIN, 15));
-        btn_Crear.setBounds(150, 130, 150, 30);
+        btn_Crear.setBounds(10, 121, 190, 30);
         contentPane.add(btn_Crear);
 
         // Botón Continuar sin cuenta
         JButton btnSinCuenta = new JButton("Continuar sin cuenta");
         btnSinCuenta.setFont(new Font("Arial", Font.PLAIN, 15));
-        btnSinCuenta.setBounds(130, 180, 190, 30);
+        btnSinCuenta.setBounds(10, 162, 190, 30);
         contentPane.add(btnSinCuenta);
+        
+        JLabel imgFondo = new JLabel("");
+        imgFondo.setIcon(new ImageIcon(Ventana_Idenificarse.class.getResource("/img/verticalBanner.jpg")));
+        imgFondo.setBounds(-192, -84, 642, 448);
+        contentPane.add(imgFondo);
 
         // Acciones de los botones
         btn_Sesion.addActionListener(new ActionListener() {

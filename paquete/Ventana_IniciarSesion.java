@@ -1,4 +1,4 @@
-package paquete;
+ package paquete;
 
 import java.awt.EventQueue;
 
@@ -17,6 +17,8 @@ import java.sql.SQLException;
 
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
+import java.awt.Toolkit;
+import javax.swing.ImageIcon;
 
 public class Ventana_IniciarSesion extends JFrame {
 
@@ -45,6 +47,8 @@ public class Ventana_IniciarSesion extends JFrame {
 	 * Create the frame.
 	 */
 	public Ventana_IniciarSesion() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Ventana_IniciarSesion.class.getResource("/img/logoApp.jpeg")));
+		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -53,65 +57,50 @@ public class Ventana_IniciarSesion extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		//Cambio icono NO FUNCIONA
-		/*try {
-		    URL imageUrl = getClass().getResource("/fotos/logoApp.jpeg");
-		    
-		    if (imageUrl == null) {
-		        throw new RuntimeException("No se pudo encontrar la imagen: /fotos/logoApp.jpeg");
-		    }
-		    
-		    // Opción 1: Usando ImageIO
-		    BufferedImage icono = ImageIO.read(imageUrl);
-		    setIconImage(icono);
-		    
-		    // Opción 2:Usando Toolkit
-		    // Image icono = Toolkit.getDefaultToolkit().getImage(imageUrl);
-		    // setIconImage(icono);
-		    
-		} catch (IOException e) {
-		    System.err.println("Error al cargar el icono de la aplicación: " + e.getMessage());
-		}*/
-		
 		//CAMPOS DE TEXTO
 		//Campo de texto usuario
 		txtNombre = new JTextField();
-		txtNombre.setBounds(216, 70, 86, 20);
+		txtNombre.setBounds(24, 88, 171, 20);
 		contentPane.add(txtNombre);
 		txtNombre.setColumns(10);
 		//Campo de texto contraseña
 		txtPass = new JPasswordField();
-		txtPass.setBounds(216, 116, 86, 20);
+		txtPass.setBounds(24, 162, 171, 20);
 		contentPane.add(txtPass);
 		
 		//LABELS
 		//Label del campo de texto usuario
 		JLabel lblNewLabel = new JLabel("Usuario");
 		lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 16));
-		lblNewLabel.setBounds(133, 61, 54, 35);
+		lblNewLabel.setBounds(24, 58, 81, 35);
 		contentPane.add(lblNewLabel);
 		//Label del campo de texto Contraseña
 		JLabel lblContrasea = new JLabel("Contraseña");
 		lblContrasea.setFont(new Font("Arial", Font.PLAIN, 16));
-		lblContrasea.setBounds(106, 107, 81, 35);
+		lblContrasea.setBounds(24, 127, 102, 35);
 		contentPane.add(lblContrasea);
 		//Label titulo
 		JLabel lblIniciarSesin = new JLabel("Iniciar sesión");
-		lblIniciarSesin.setFont(new Font("Arial", Font.PLAIN, 16));
-		lblIniciarSesin.setBounds(165, 15, 91, 35);
+		lblIniciarSesin.setFont(new Font("Arial", Font.PLAIN, 20));
+		lblIniciarSesin.setBounds(46, 11, 120, 35);
 		contentPane.add(lblIniciarSesin);
 		
 		//BOTONES
 		//Boton continuar
 		JButton btn_Continuar = new JButton("Continuar");
 		btn_Continuar.setFont(new Font("Arial", Font.PLAIN, 13));
-		btn_Continuar.setBounds(239, 173, 89, 23);
+		btn_Continuar.setBounds(117, 222, 89, 23);
 		contentPane.add(btn_Continuar);
 		//Boton para ir hacia atrás
 		JButton btn_Atras = new JButton("Atrás");
 		btn_Atras.setFont(new Font("Arial", Font.PLAIN, 13));
-		btn_Atras.setBounds(106, 173, 89, 23);
+		btn_Atras.setBounds(16, 222, 89, 23);
 		contentPane.add(btn_Atras);
+		
+		JLabel lblNewLabel_1 = new JLabel("New label");
+		lblNewLabel_1.setIcon(new ImageIcon(Ventana_IniciarSesion.class.getResource("/img/banner.jpeg")));
+		lblNewLabel_1.setBounds(223, -17, 211, 278);
+		contentPane.add(lblNewLabel_1);
 		
 		//METODOS
 		//Metodo del boton "Ir hacia atras" FUNCIONA
@@ -156,7 +145,7 @@ public class Ventana_IniciarSesion extends JFrame {
 			 }
 		 });
 		 
-		 //CRER UN PUBLIC PARA EL METODO 
+		 
 			
 	}
 }

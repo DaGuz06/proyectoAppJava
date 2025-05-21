@@ -13,8 +13,11 @@ import java.awt.event.ActionListener;
 import java.sql.SQLException;
 
 import javax.swing.JTextArea;
+import javax.swing.SwingConstants;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import java.awt.Toolkit;
+import javax.swing.ImageIcon;
 
 public class VentanaCrearCuenta extends JFrame {
 
@@ -42,6 +45,8 @@ public class VentanaCrearCuenta extends JFrame {
 	 * Create the frame.
 	 */
 	public VentanaCrearCuenta() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(VentanaCrearCuenta.class.getResource("/img/logoApp.jpeg")));
+		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -53,41 +58,58 @@ public class VentanaCrearCuenta extends JFrame {
 		//Campos de texto
 		//Campo de texto Usuario
 		JTextArea txtNombre = new JTextArea();
-		txtNombre.setBounds(212, 76, 105, 22);
+		txtNombre.setBounds(30, 92, 188, 22);
 		contentPane.add(txtNombre);
 		//Campo de texto Contraseña
 		txtPass = new JPasswordField();
-		txtPass.setBounds(214, 121, 103, 20);
+		txtPass.setBounds(30, 155, 188, 20);
 		contentPane.add(txtPass);
 		
 		//LABELS
 		//Label campo usuario
 		JLabel lblNewLabel = new JLabel("Usuario");
-		lblNewLabel.setBounds(76, 76, 89, 18);
+		lblNewLabel.setBounds(30, 68, 89, 18);
 		lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 16));
 		contentPane.add(lblNewLabel);
 		//Label campo contraseña
 		JLabel lblContrasea = new JLabel("Contraseña");
-		lblContrasea.setBounds(76, 123, 89, 18);
+		lblContrasea.setBounds(30, 125, 89, 18);
 		lblContrasea.setFont(new Font("Arial", Font.PLAIN, 16));
 		contentPane.add(lblContrasea);
 		//Label titulo Crear Cuenta
 		JLabel lblCrearCuenta = new JLabel("Crear cuenta");
-		lblCrearCuenta.setBounds(145, 21, 117, 25);
+		lblCrearCuenta.setBounds(51, 22, 117, 25);
 		lblCrearCuenta.setFont(new Font("Arial", Font.PLAIN, 20));
 		contentPane.add(lblCrearCuenta);
 		
 		//BOTONES
 		//Boton crear cuenta
 		JButton btn_Crear = new JButton("Crear");
-		btn_Crear.setBounds(159, 205, 89, 23);
+		btn_Crear.setBounds(129, 204, 89, 23);
 		btn_Crear.setFont(new Font("Arial", Font.PLAIN, 14));
 		contentPane.add(btn_Crear);
 		//Boton ir hacia atrás
 		JButton btn_Atras = new JButton("Atrás");       
-		btn_Atras.setBounds(159, 171, 89, 23);
+		btn_Atras.setBounds(30, 204, 89, 23);
 		btn_Atras.setFont(new Font("Arial", Font.PLAIN, 14));
 		contentPane.add(btn_Atras);
+		
+		JLabel lblNewLabel_1 = new JLabel("New label");
+		lblNewLabel_1.setIcon(new ImageIcon(VentanaCrearCuenta.class.getResource("/img/banner.jpeg")));
+		lblNewLabel_1.setBounds(239, 5, 194, 261);
+		contentPane.add(lblNewLabel_1);
+		
+		
+		
+		
+		//IMAGEN DE FONDO
+        JLabel lblIcono = new JLabel("New label");
+		lblIcono.setHorizontalAlignment(SwingConstants.CENTER);
+		lblIcono.setIcon(new ImageIcon(ClaseInicio.class.getResource("/img/fondoCrearCuenta.jpeg")));
+		lblIcono.setBounds(-142, -34, 592, 306);
+		contentPane.add(lblIcono);
+		
+		
 		
 		
 		btn_Atras.addActionListener(new ActionListener() {
@@ -109,6 +131,7 @@ public class VentanaCrearCuenta extends JFrame {
 				 //ingresa el nombre y contraseña que desee el usuario
 				 
 				 try {
+					 	//
 			            ClaseConexion.conexion.conectar();
 			            String SQL = "INSERT INTO tb_user (`nombre_usuario`, `contrasena`) VALUES ('"+usuario+"', '"+contrasena+"')";
 			            ClaseConexion.conexion.ejecutarInsertDeleteUpdate(SQL);

@@ -9,8 +9,11 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.ImageIcon;
+import java.awt.Font;
+import javax.swing.SwingConstants;
 
-public class inicio extends JFrame {
+public class ClaseInicio extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -22,7 +25,7 @@ public class inicio extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					inicio frame = new inicio();
+					ClaseInicio frame = new ClaseInicio();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -34,7 +37,9 @@ public class inicio extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public inicio() {
+	public ClaseInicio() {
+		setTitle("IPTracker");
+		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -43,13 +48,21 @@ public class inicio extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JButton inicio = new JButton("Inicio");
-		inicio.setBounds(158, 168, 117, 29);
+		JButton inicio = new JButton("INICIAR");
+		inicio.setFont(new Font("Arial", Font.BOLD, 14));
+		inicio.setBounds(158, 143, 117, 29);
 		contentPane.add(inicio);
 		
 		JLabel bienvenido = new JLabel("Bienvenido a IPTracker");
-		bienvenido.setBounds(144, 30, 169, 16);
+		bienvenido.setFont(new Font("Arial", Font.BOLD, 20));
+		bienvenido.setBounds(115, 31, 226, 16);
 		contentPane.add(bienvenido);
+		
+		JLabel lblIcono = new JLabel("New label");
+		lblIcono.setHorizontalAlignment(SwingConstants.CENTER);
+		lblIcono.setIcon(new ImageIcon(ClaseInicio.class.getResource("/img/fondo inicio.jpeg")));
+		lblIcono.setBounds(-182, -74, 632, 428);
+		contentPane.add(lblIcono);
 
 		// Acción del botón para abrir Ventana_Idenificarse y cerrar esta ventana
 		inicio.addActionListener(new ActionListener() { 

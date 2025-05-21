@@ -23,7 +23,8 @@ public class Ventana_Historial extends JFrame {
     }
 
     public Ventana_Historial() {
-        setTitle("Historial de Búsquedas");
+    	setResizable(false);
+        setTitle("IPTracker");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setBounds(100, 100, 800, 500);
         contentPane = new JPanel();

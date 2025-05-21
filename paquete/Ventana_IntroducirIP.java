@@ -9,6 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -19,7 +20,11 @@ import java.sql.SQLException;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import javax.swing.JTextArea;
+import javax.swing.SwingConstants;
+
 import java.awt.Color;
+import javax.swing.ImageIcon;
+import java.awt.Toolkit;
 
 public class Ventana_IntroducirIP extends JFrame {
 
@@ -31,6 +36,7 @@ public class Ventana_IntroducirIP extends JFrame {
     private String ciudadActual;
     private String paisActual;
     private String locActual;
+    private boolean btnAccionado = false;
 
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
@@ -46,6 +52,8 @@ public class Ventana_IntroducirIP extends JFrame {
     }
 
     public Ventana_IntroducirIP() {
+    	setIconImage(Toolkit.getDefaultToolkit().getImage(Ventana_IntroducirIP.class.getResource("/img/logoApp.jpeg")));
+    	setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 503, 365);
         contentPane = new JPanel();
@@ -57,24 +65,27 @@ public class Ventana_IntroducirIP extends JFrame {
         contentPane.setLayout(null);
         
         //Botones
-        JButton btnHistorial = new JButton("Historial");
-        btnHistorial.setBounds(330, 274, 89, 23);
+        JButton btnHistorial = new JButton("Ver Historial");
+        btnHistorial.setFont(new Font("Arial", Font.PLAIN, 14));
+        btnHistorial.setBounds(330, 287, 139, 23);
         if(Ventana_Idenificarse.pulsado == true) {
             btnHistorial.setVisible(false);
         }
         contentPane.add(btnHistorial);
         
         JButton btnMostrar = new JButton("Mostrar resultado");
-        btnMostrar.setBounds(168, 274, 152, 23);
+        btnMostrar.setFont(new Font("Arial", Font.PLAIN, 14));
+        btnMostrar.setBounds(166, 287, 152, 23);
         contentPane.add(btnMostrar);
         
         JButton btn_Atras = new JButton("Atrás");       
-        btn_Atras.setBounds(69, 273, 89, 23);
+        btn_Atras.setBounds(44, 287, 89, 23);
         btn_Atras.setFont(new Font("Arial", Font.PLAIN, 14));
         contentPane.add(btn_Atras);
         
-        JButton btnGuardar = new JButton("Guardar");
-        btnGuardar.setBounds(330, 63, 89, 24);
+        JButton btnGuardar = new JButton("Guardar información");
+        btnGuardar.setFont(new Font("Arial", Font.PLAIN, 14));
+        btnGuardar.setBounds(302, 87, 167, 24);
         if(Ventana_Idenificarse.pulsado == true) {
         	btnGuardar.setVisible(false);
         }
@@ -82,28 +93,52 @@ public class Ventana_IntroducirIP extends JFrame {
         
         //LABELS
         JLabel lblTitulo = new JLabel("IP Tracker");
-        lblTitulo.setFont(new Font("Arial", Font.PLAIN, 20));
-        lblTitulo.setBounds(189, 11, 132, 41);
+        lblTitulo.setFont(new Font("Arial", Font.BOLD, 20));
+        lblTitulo.setBounds(229, 23, 132, 41);
         contentPane.add(lblTitulo);
         
         JLabel lblIntroduzca = new JLabel("Introduzca la IP:");
         lblIntroduzca.setFont(new Font("Arial", Font.PLAIN, 16));
-        lblIntroduzca.setBounds(69, 66, 127, 14);
+        lblIntroduzca.setBounds(44, 90, 127, 14);
         contentPane.add(lblIntroduzca);
         
-        JLabel lblNewLabel = new JLabel("New label");
-        lblNewLabel.setBounds(112, 27, 46, 14);
-        contentPane.add(lblNewLabel);
+        
+        
+        /*
+        //IMAGEN DE FONDO
+        JLabel lblIcono = new JLabel("New label");
+		lblIcono.setHorizontalAlignment(SwingConstants.CENTER);
+		lblIcono.setIcon(new ImageIcon(ClaseInicio.class.getResource("/img/fondo meter ip.jpeg")));
+		lblIcono.setBounds(-182, -74, 622, 428);
+		contentPane.add(lblIcono);
+        
+        */
+		
+		
+        
+        
+        JLabel lblfondo = new JLabel("PartysPlace");
+        lblfondo.setBounds(166, 18, 51, 52);
+        lblfondo.setFont(new Font("Arial", Font.BOLD, 18));
+        contentPane.add(lblfondo);
+        contentPane.setLayout(null);
+        ImageIcon icono2= new ImageIcon(Ventana_IntroducirIP.class.getResource("/img/logoApp.jpeg"));
+        Image imagen2 = icono2.getImage().getScaledInstance( lblfondo.getWidth(),lblfondo.getHeight(), Image.SCALE_SMOOTH);
+        ImageIcon iconoAjustado2 = new ImageIcon(imagen2);
+
+
+
+        lblfondo.setIcon(iconoAjustado2);
         
         //Campos de texto
         JTextArea txtIngresar = new JTextArea();
         txtIngresar.setBackground(new Color(191, 191, 191));
-        txtIngresar.setBounds(189, 63, 127, 22);
+        txtIngresar.setBounds(166, 87, 127, 22);
         contentPane.add(txtIngresar);
         
         JTextArea areaResultado = new JTextArea();
         areaResultado.setBackground(new Color(191, 191, 191));
-        areaResultado.setBounds(69, 91, 350, 149);
+        areaResultado.setBounds(44, 116, 423, 159);
         areaResultado.setMargin(new Insets(5, 10, 5, 5));
         contentPane.add(areaResultado);
         areaResultado.setEditable(false);
@@ -129,7 +164,7 @@ public class Ventana_IntroducirIP extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 String ip = txtIngresar.getText();
                 String urlStr = "https://ipinfo.io/" + ip + "/json";
-
+                btnAccionado = true;
                 try {
                     URL url = new URL(urlStr);
                     HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -173,29 +208,34 @@ public class Ventana_IntroducirIP extends JFrame {
                 String usuario = Ventana_IniciarSesion.txtNombre.getText();
                 String contrasena = Ventana_IniciarSesion.txtPass.getText();
                 
-                try {
-                    ClaseConexion.conexion.conectar();
-                    
-                    String consultaUsuario = "SELECT id FROM tb_user WHERE nombre_usuario = '"+usuario+"' AND contrasena = '"+contrasena+"'";
-                    ResultSet rs = ClaseConexion.conexion.ejecutarSelect(consultaUsuario);
-                    
-                    int usuarioID = -1;
-                    if(rs.next()) {
-                        usuarioID = rs.getInt("id");
+                if (btnAccionado == false) {
+                	JOptionPane.showMessageDialog(null, "No se ha obtenido ningún dato. Prueba antes a darle a 'Mostrar información'", "Error", JOptionPane.ERROR_MESSAGE);
+                }else {
+                	try {
+                        ClaseConexion.conexion.conectar();
+                        
+                        String consultaUsuario = "SELECT id FROM tb_user WHERE nombre_usuario = '"+usuario+"' AND contrasena = '"+contrasena+"'";
+                        ResultSet rs = ClaseConexion.conexion.ejecutarSelect(consultaUsuario);
+                        
+                        int usuarioID = -1;
+                        if(rs.next()) {
+                            usuarioID = rs.getInt("id");
+                        }
+                        
+                        String sentenciaSQL = "INSERT INTO historial_ips (`usuario_id`, `ip`, `hostname`, `ciudad`, `pais`, `coordenadas`) " +
+                                           "VALUES ('"+usuarioID+"', '"+ipActual+"', '"+hostnameActual+"', '"+ciudadActual+"', '"+paisActual+"', '"+locActual+"')";
+                        
+                        ClaseConexion.conexion.ejecutarInsertDeleteUpdate(sentenciaSQL);
+                        ClaseConexion.conexion.desconectar();
+                        
+                        JOptionPane.showMessageDialog(null, "Datos guardados correctamente");
+                        
+                    } catch (SQLException e1) {
+                        e1.printStackTrace();
+                        JOptionPane.showMessageDialog(null, "Error al guardar los datos", "Error", JOptionPane.ERROR_MESSAGE);
                     }
-                    
-                    String sentenciaSQL = "INSERT INTO historial_ips (`usuario_id`, `ip`, `hostname`, `ciudad`, `pais`, `coordenadas`) " +
-                                       "VALUES ('"+usuarioID+"', '"+ipActual+"', '"+hostnameActual+"', '"+ciudadActual+"', '"+paisActual+"', '"+locActual+"')";
-                    
-                    ClaseConexion.conexion.ejecutarInsertDeleteUpdate(sentenciaSQL);
-                    ClaseConexion.conexion.desconectar();
-                    
-                    JOptionPane.showMessageDialog(null, "Datos guardados correctamente");
-                    
-                } catch (SQLException e1) {
-                    e1.printStackTrace();
-                    JOptionPane.showMessageDialog(null, "Error al guardar los datos", "Error", JOptionPane.ERROR_MESSAGE);
                 }
+                
             }
         });
     }
