@@ -50,7 +50,7 @@ public class ClaseInicio extends JFrame {
 		
 		JButton inicio = new JButton("INICIAR");
 		inicio.setFont(new Font("Arial", Font.BOLD, 14));
-		inicio.setBounds(158, 143, 117, 29);
+		inicio.setBounds(155, 72, 117, 29);
 		contentPane.add(inicio);
 		
 		JLabel bienvenido = new JLabel("Bienvenido a IPTracker");
@@ -61,13 +61,13 @@ public class ClaseInicio extends JFrame {
 		JLabel lblIcono = new JLabel("New label");
 		lblIcono.setHorizontalAlignment(SwingConstants.CENTER);
 		lblIcono.setIcon(new ImageIcon(ClaseInicio.class.getResource("/img/fondo_inicio.jpg")));
-		lblIcono.setBounds(-182, -74, 632, 428);
+		lblIcono.setBounds(-178, -183, 835, 647);
 		contentPane.add(lblIcono);
 
 		// Acción del botón para abrir Ventana_Idenificarse y cerrar esta ventana
 		inicio.addActionListener(new ActionListener() { 
 			public void actionPerformed(ActionEvent e) {
-				Ventana_Idenificarse ventana = new Ventana_Idenificarse();
+				Ventana_Identificarse ventana = new Ventana_Identificarse();
 				ventana.setVisible(true);
 				dispose(); // Cierra la ventana actual
 			}

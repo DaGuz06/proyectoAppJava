@@ -26,17 +26,19 @@ public class Ventana_Historial extends JFrame {
     	setResizable(false);
         setTitle("IPTracker");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setBounds(100, 100, 800, 500);
+        setBounds(100, 100, 800, 564);
         contentPane = new JPanel();
         contentPane.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         setContentPane(contentPane);
-        contentPane.setLayout(new BorderLayout(0, 10));
+        contentPane.setLayout(null);
 
         // Título
         JLabel lblTitulo = new JLabel("Historial de Búsquedas");
+        lblTitulo.setForeground(new Color(255, 255, 255));
+        lblTitulo.setBounds(10, 10, 764, 22);
         lblTitulo.setFont(new Font("Arial", Font.BOLD, 18));
         lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
-        contentPane.add(lblTitulo, BorderLayout.NORTH);
+        contentPane.add(lblTitulo);
 
         // Tabla para mostrar los datos
         table = new JTable();
@@ -62,10 +64,12 @@ public class Ventana_Historial extends JFrame {
         model.addColumn("Fecha");
 
         JScrollPane scrollPane = new JScrollPane(table);
-        contentPane.add(scrollPane, BorderLayout.CENTER);
+        scrollPane.setBounds(10, 42, 764, 402);
+        contentPane.add(scrollPane);
 
         // Panel de botones
         JPanel panelBotones = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
+        panelBotones.setBounds(10, 454, 764, 43);
         
         JButton btnActualizar = new JButton("Actualizar");
         btnActualizar.addActionListener(e -> cargarHistorial());
@@ -83,7 +87,12 @@ public class Ventana_Historial extends JFrame {
         });
         panelBotones.add(btnVolver);
 
-        contentPane.add(panelBotones, BorderLayout.SOUTH);
+        contentPane.add(panelBotones);
+        
+        JLabel lblNewLabel = new JLabel("New label");
+        lblNewLabel.setIcon(new ImageIcon(Ventana_Historial.class.getResource("/img/fondoNegro.jpeg")));
+        lblNewLabel.setBounds(0, 0, 657, 417);
+        contentPane.add(lblNewLabel);
 
         // Cargar datos al iniciar
         cargarHistorial();

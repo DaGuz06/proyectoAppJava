@@ -114,7 +114,7 @@ public class VentanaCrearCuenta extends JFrame {
 		
 		btn_Atras.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                Ventana_Idenificarse ventanaInicio = new Ventana_Idenificarse();
+                Ventana_Identificarse ventanaInicio = new Ventana_Identificarse();
                 ventanaInicio.setVisible(true);
                 dispose();
             }

@@ -106,7 +106,7 @@ public class Ventana_IniciarSesion extends JFrame {
 		//Metodo del boton "Ir hacia atras" FUNCIONA
 		 btn_Atras.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
-	                Ventana_Idenificarse ventanaInicio = new Ventana_Idenificarse();
+	                Ventana_Identificarse ventanaInicio = new Ventana_Identificarse();
 	                ventanaInicio.setVisible(true);
 	                dispose();
 	            }

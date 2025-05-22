@@ -75,7 +75,7 @@ public class Ventana_IntroducirIP extends JFrame {
         JButton btnHistorial = new JButton("Ver Historial");
         btnHistorial.setFont(new Font("Arial", Font.PLAIN, 14));
         btnHistorial.setBounds(330, 287, 139, 23);
-        if(Ventana_Idenificarse.pulsado == true) {
+        if(Ventana_Identificarse.pulsado == true) {
             btnHistorial.setVisible(false);
         }
         contentPane.add(btnHistorial);
@@ -93,7 +93,7 @@ public class Ventana_IntroducirIP extends JFrame {
         JButton btnGuardar = new JButton("Guardar información");
         btnGuardar.setFont(new Font("Arial", Font.PLAIN, 14));
         btnGuardar.setBounds(302, 87, 167, 24);
-        if(Ventana_Idenificarse.pulsado == true) {
+        if(Ventana_Identificarse.pulsado == true) {
         	btnGuardar.setVisible(false);
         }
         contentPane.add(btnGuardar);
@@ -152,7 +152,7 @@ public class Ventana_IntroducirIP extends JFrame {
         
         JLabel lblNewLabel = new JLabel("New label");
         lblNewLabel.setIcon(new ImageIcon(Ventana_IntroducirIP.class.getResource("/img/fondoCrearCuenta.jpeg")));
-        lblNewLabel.setBounds(-68, -11, 585, 355);
+        lblNewLabel.setBounds(0, 0, 487, 326);
         contentPane.add(lblNewLabel);
         
         //METODOS
@@ -166,7 +166,7 @@ public class Ventana_IntroducirIP extends JFrame {
         
         btn_Atras.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                Ventana_Idenificarse Ventana_Registrarse = new Ventana_Idenificarse();
+                Ventana_Identificarse Ventana_Registrarse = new Ventana_Identificarse();
                 Ventana_Registrarse.setVisible(true);
                 dispose();
             }
