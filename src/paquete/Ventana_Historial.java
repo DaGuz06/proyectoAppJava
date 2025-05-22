@@ -91,8 +91,23 @@ public class Ventana_Historial extends JFrame {
         
         JLabel lblNewLabel = new JLabel("New label");
         lblNewLabel.setIcon(new ImageIcon(Ventana_Historial.class.getResource("/img/fondoNegro.jpeg")));
-        lblNewLabel.setBounds(0, 0, 657, 417);
+        lblNewLabel.setBounds(0, 108, 623, 417);
         contentPane.add(lblNewLabel);
+        
+        JLabel lblNewLabel_1 = new JLabel("New label");
+        lblNewLabel_1.setIcon(new ImageIcon(Ventana_Historial.class.getResource("/img/fondoNegro.jpeg")));
+        lblNewLabel_1.setBounds(355, 108, 623, 417);
+        contentPane.add(lblNewLabel_1);
+        
+        JLabel lblNewLabel_1_1 = new JLabel("New label");
+        lblNewLabel_1_1.setIcon(new ImageIcon(Ventana_Historial.class.getResource("/img/fondoNegro.jpeg")));
+        lblNewLabel_1_1.setBounds(172, -152, 623, 417);
+        contentPane.add(lblNewLabel_1_1);
+        
+        JLabel lblNewLabel_1_1_1 = new JLabel("New label");
+        lblNewLabel_1_1_1.setIcon(new ImageIcon(Ventana_Historial.class.getResource("/img/fondoNegro.jpeg")));
+        lblNewLabel_1_1_1.setBounds(-287, -180, 623, 417);
+        contentPane.add(lblNewLabel_1_1_1);
 
         // Cargar datos al iniciar
         cargarHistorial();

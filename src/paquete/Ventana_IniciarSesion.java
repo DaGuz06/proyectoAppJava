@@ -26,6 +26,7 @@ public class Ventana_IniciarSesion extends JFrame {
 	private JPanel contentPane;
 	public static JTextField txtNombre;
 	public static JPasswordField txtPass;
+	public static boolean atrasPulsado = false;
 
 	/**
 	 * Launch the application.
@@ -56,6 +57,11 @@ public class Ventana_IniciarSesion extends JFrame {
 		setTitle("IP Tracker");
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		
+		JLabel lblNewLabel_1 = new JLabel("New label");
+		lblNewLabel_1.setIcon(new ImageIcon(Ventana_IniciarSesion.class.getResource("/img/logoJacker.png")));
+		lblNewLabel_1.setBounds(152, 0, 272, 257);
+		contentPane.add(lblNewLabel_1);
 		
 		//CAMPOS DE TEXTO
 		//Campo de texto usuario
@@ -97,10 +103,10 @@ public class Ventana_IniciarSesion extends JFrame {
 		btn_Atras.setBounds(16, 222, 89, 23);
 		contentPane.add(btn_Atras);
 		
-		JLabel lblNewLabel_1 = new JLabel("New label");
-		lblNewLabel_1.setIcon(new ImageIcon(Ventana_IniciarSesion.class.getResource("/img/banner.jpeg")));
-		lblNewLabel_1.setBounds(223, -17, 211, 278);
-		contentPane.add(lblNewLabel_1);
+		JLabel lblNewLabel_2 = new JLabel("New label");
+		lblNewLabel_2.setIcon(new ImageIcon(Ventana_IniciarSesion.class.getResource("/img/fondoCrearCuenta.jpeg")));
+		lblNewLabel_2.setBounds(0, -59, 434, 340);
+		contentPane.add(lblNewLabel_2);
 		
 		//METODOS
 		//Metodo del boton "Ir hacia atras" FUNCIONA

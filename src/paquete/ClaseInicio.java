@@ -50,7 +50,7 @@ public class ClaseInicio extends JFrame {
 		
 		JButton inicio = new JButton("INICIAR");
 		inicio.setFont(new Font("Arial", Font.BOLD, 14));
-		inicio.setBounds(155, 72, 117, 29);
+		inicio.setBounds(158, 72, 117, 29);
 		contentPane.add(inicio);
 		
 		JLabel bienvenido = new JLabel("Bienvenido a IPTracker");

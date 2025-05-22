@@ -64,13 +64,6 @@ public class Ventana_IntroducirIP extends JFrame {
         setContentPane(contentPane);
         contentPane.setLayout(null);
         
-        
-        
-        
-        
-        
-        
-        
         //Botones
         JButton btnHistorial = new JButton("Ver Historial");
         btnHistorial.setFont(new Font("Arial", Font.PLAIN, 14));
@@ -86,9 +79,10 @@ public class Ventana_IntroducirIP extends JFrame {
         contentPane.add(btnMostrar);
         
         JButton btn_Atras = new JButton("Atrás");       
-        btn_Atras.setBounds(44, 287, 89, 23);
+        btn_Atras.setBounds(44, 287, 112, 23);
         btn_Atras.setFont(new Font("Arial", Font.PLAIN, 14));
         contentPane.add(btn_Atras);
+        Ventana_IniciarSesion.atrasPulsado = true;
         
         JButton btnGuardar = new JButton("Guardar información");
         btnGuardar.setFont(new Font("Arial", Font.PLAIN, 14));
@@ -100,11 +94,13 @@ public class Ventana_IntroducirIP extends JFrame {
         
         //LABELS
         JLabel lblTitulo = new JLabel("IP Tracker");
+        lblTitulo.setForeground(new Color(255, 255, 255));
         lblTitulo.setFont(new Font("Arial", Font.BOLD, 20));
         lblTitulo.setBounds(229, 23, 132, 41);
         contentPane.add(lblTitulo);
         
         JLabel lblIntroduzca = new JLabel("Introduzca la IP:");
+        lblIntroduzca.setForeground(new Color(255, 255, 255));
         lblIntroduzca.setFont(new Font("Arial", Font.PLAIN, 16));
         lblIntroduzca.setBounds(44, 90, 127, 14);
         contentPane.add(lblIntroduzca);
@@ -124,7 +120,7 @@ public class Ventana_IntroducirIP extends JFrame {
 		
         
         
-        JLabel lblfondo = new JLabel("PartysPlace");
+        JLabel lblfondo = new JLabel("");
         lblfondo.setBounds(166, 18, 51, 52);
         lblfondo.setFont(new Font("Arial", Font.BOLD, 18));
         contentPane.add(lblfondo);
@@ -150,8 +146,8 @@ public class Ventana_IntroducirIP extends JFrame {
         contentPane.add(areaResultado);
         areaResultado.setEditable(false);
         
-        JLabel lblNewLabel = new JLabel("New label");
-        lblNewLabel.setIcon(new ImageIcon(Ventana_IntroducirIP.class.getResource("/img/fondoCrearCuenta.jpeg")));
+        JLabel lblNewLabel = new JLabel("");
+        lblNewLabel.setIcon(new ImageIcon(Ventana_IntroducirIP.class.getResource("/img/fondoIntroducirIP.jpeg")));
         lblNewLabel.setBounds(0, 0, 487, 326);
         contentPane.add(lblNewLabel);
         

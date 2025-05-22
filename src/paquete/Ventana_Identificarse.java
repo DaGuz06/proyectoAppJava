@@ -49,20 +49,21 @@ public class Ventana_Identificarse extends JFrame {
         // Botón Iniciar sesión
         JButton btn_Sesion = new JButton("Iniciar sesión");
         btn_Sesion.setFont(new Font("Arial", Font.PLAIN, 15));
-        btn_Sesion.setBounds(10, 108, 167, 30);
+        btn_Sesion.setBounds(10, 108, 183, 30);
         contentPane.add(btn_Sesion);
 
         // Botón Crear cuenta
         JButton btn_Crear = new JButton("Crear cuenta");
         btn_Crear.setFont(new Font("Arial", Font.PLAIN, 15));
-        btn_Crear.setBounds(10, 57, 167, 30);
+        btn_Crear.setBounds(10, 57, 183, 30);
         contentPane.add(btn_Crear);
 
         // Botón Continuar sin cuenta
         JButton btnSinCuenta = new JButton("Continuar sin cuenta");
         btnSinCuenta.setFont(new Font("Arial", Font.PLAIN, 15));
-        btnSinCuenta.setBounds(10, 162, 167, 30);
+        btnSinCuenta.setBounds(10, 162, 183, 30);
         contentPane.add(btnSinCuenta);
+       
         
         JLabel lblfondo = new JLabel("");
         lblfondo.setBounds(0, 0, 434, 261);

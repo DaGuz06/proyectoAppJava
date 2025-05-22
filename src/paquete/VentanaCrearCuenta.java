@@ -55,6 +55,11 @@ public class VentanaCrearCuenta extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		JLabel lblNewLabel_1 = new JLabel("New label");
+		lblNewLabel_1.setIcon(new ImageIcon(VentanaCrearCuenta.class.getResource("/img/logoJacker.png")));
+		lblNewLabel_1.setBounds(152, 8, 272, 257);
+		contentPane.add(lblNewLabel_1);
+		
 		//Campos de texto
 		//Campo de texto Usuario
 		JTextArea txtNombre = new JTextArea();
@@ -93,11 +98,6 @@ public class VentanaCrearCuenta extends JFrame {
 		btn_Atras.setBounds(30, 204, 89, 23);
 		btn_Atras.setFont(new Font("Arial", Font.PLAIN, 14));
 		contentPane.add(btn_Atras);
-		
-		JLabel lblNewLabel_1 = new JLabel("New label");
-		lblNewLabel_1.setIcon(new ImageIcon(VentanaCrearCuenta.class.getResource("/img/banner.jpeg")));
-		lblNewLabel_1.setBounds(239, 5, 194, 261);
-		contentPane.add(lblNewLabel_1);
 		
 		
 		
