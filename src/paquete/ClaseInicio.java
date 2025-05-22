@@ -60,7 +60,7 @@ public class ClaseInicio extends JFrame {
 		
 		JLabel lblIcono = new JLabel("New label");
 		lblIcono.setHorizontalAlignment(SwingConstants.CENTER);
-		lblIcono.setIcon(new ImageIcon(ClaseInicio.class.getResource("/img/fondo inicio.jpeg")));
+		lblIcono.setIcon(new ImageIcon(ClaseInicio.class.getResource("/img/fondo_inicio.jpg")));
 		lblIcono.setBounds(-182, -74, 632, 428);
 		contentPane.add(lblIcono);
 

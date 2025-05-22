@@ -71,7 +71,7 @@ public class Ventana_Idenificarse extends JFrame {
         contentPane.add(btnSinCuenta);
         
         JLabel imgFondo = new JLabel("");
-        imgFondo.setIcon(new ImageIcon(Ventana_Idenificarse.class.getResource("/img/verticalBanner.jpg")));
+        imgFondo.setIcon(new ImageIcon(Ventana_Idenificarse.class.getResource("/img/fondo1.jpeg")));
         imgFondo.setBounds(-192, -84, 642, 448);
         contentPane.add(imgFondo);
 

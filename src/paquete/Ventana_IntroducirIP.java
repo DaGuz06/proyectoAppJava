@@ -64,6 +64,13 @@ public class Ventana_IntroducirIP extends JFrame {
         setContentPane(contentPane);
         contentPane.setLayout(null);
         
+        
+        
+        
+        
+        
+        
+        
         //Botones
         JButton btnHistorial = new JButton("Ver Historial");
         btnHistorial.setFont(new Font("Arial", Font.PLAIN, 14));
@@ -142,6 +149,11 @@ public class Ventana_IntroducirIP extends JFrame {
         areaResultado.setMargin(new Insets(5, 10, 5, 5));
         contentPane.add(areaResultado);
         areaResultado.setEditable(false);
+        
+        JLabel lblNewLabel = new JLabel("New label");
+        lblNewLabel.setIcon(new ImageIcon(Ventana_IntroducirIP.class.getResource("/img/fondoCrearCuenta.jpeg")));
+        lblNewLabel.setBounds(-68, -11, 585, 355);
+        contentPane.add(lblNewLabel);
         
         //METODOS
         btnHistorial.addActionListener(new ActionListener() {
