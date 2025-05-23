@@ -78,6 +78,7 @@ public class Ventana_Identificarse extends JFrame {
         // Acciones de los botones
         btn_Sesion.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+            	pulsado = false;
                 Ventana_IniciarSesion ventanaSesion = new Ventana_IniciarSesion();
                 ventanaSesion.setVisible(true);
                 dispose();
