@@ -14,6 +14,81 @@ Aplicación de escritorio desarrollada en **Java** con interfaz gráfica **Swing
 
 ---
 
+## BBDD
+### 🧍‍♂️ Tabla: `tb_user`
+
+Representa a los usuarios registrados en la app.
+
+| Campo           | Tipo         | Restricciones                     |
+|----------------|--------------|----------------------------------|
+| id             | int(11)      | PRIMARY KEY, AUTO_INCREMENT      |
+| nombre_usuario | varchar(50)  | NOT NULL, UNIQUE                 |
+| contrasena     | varchar(50)  | NOT NULL                         |
+
+🔸 **Trigger:** `TRG_PERSONAS` → Inserta automáticamente un log en `personas_log` al crear un nuevo usuario.
+
+---
+
+### 🌐 Tabla: `historial_ips`
+
+Almacena el historial de IPs consultadas por los usuarios.
+
+| Campo        | Tipo         | Restricciones                                |
+|-------------|--------------|---------------------------------------------|
+| id          | int(11)      | PRIMARY KEY, AUTO_INCREMENT                  |
+| usuario_id  | int(11)      | FOREIGN KEY → `tb_user.id` ON DELETE CASCADE |
+| ip          | varchar(45)  | NOT NULL                                     |
+| hostname    | varchar(255) | NULL                                         |
+| ciudad      | varchar(100) | NULL                                         |
+| pais        | varchar(10)  | NULL                                         |
+| coordenadas | varchar(50)  | NULL                                         |
+| fecha       | datetime     | DEFAULT current_timestamp()                 |
+
+---
+
+### 🧾 Tabla: `personas_log`
+
+Bitácora de creación de usuarios.
+
+| Campo           | Tipo         | Restricciones                     |
+|----------------|--------------|----------------------------------|
+| ID_LOG         | int(11)      | PRIMARY KEY, AUTO_INCREMENT      |
+| NOMBRE_USUARIO | varchar(100) | NULL                             |
+| HORA_CREACION  | datetime     | DEFAULT current_timestamp()      |
+
+⚠️ **Nota:** No tiene clave foránea, pero se alimenta desde el trigger de `tb_user`.
+
+---
+
+### 🔗 Diagrama Entidad-Relación (ASCII)
+
+```
++----------------+           +--------------------+
+|    tb_user     |1--------< |   historial_ips    |
+|----------------|           |--------------------|
+| id (PK)        |           | id (PK)            |
+| nombre_usuario |           | usuario_id (FK)    |
+| contrasena     |           | ip                 |
++----------------+           | hostname           |
+        |                    | ciudad             |
+        |                    | pais               |
+        |                    | coordenadas        |
+        |                    | fecha              |
+        |                    +--------------------+
+        |
+        |  (AFTER INSERT)
+        v
++------------------+
+|  personas_log    |
+|------------------|
+| ID_LOG (PK)      |
+| NOMBRE_USUARIO   |
+| HORA_CREACION    |
++------------------+
+```
+
+---
+
 ## 🛠️ Requisitos
 
 - Java JDK 8 o superior
