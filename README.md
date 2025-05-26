@@ -76,7 +76,7 @@ Registro de creación de usuarios.
         |                    | fecha              |
         |                    +--------------------+
         |
-        |  (AFTER INSERT)
+        |  (DESPUÉS DE UN INSERT)
         v
 +------------------+
 |  personas_log    |
