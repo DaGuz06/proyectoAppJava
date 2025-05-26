@@ -22,7 +22,7 @@ import javax.swing.ImageIcon;
 
 public class Ventana_IniciarSesion extends JFrame {
 
-	private static final long serialVersionUID = 1L;
+
 	private JPanel contentPane;
 	public static JTextField txtNombre;
 	public static JPasswordField txtPass;
