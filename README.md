@@ -48,7 +48,7 @@ Almacena el historial de IPs consultadas por los usuarios.
 
 ### 🧾 Tabla: `personas_log`
 
-Bitácora de creación de usuarios.
+Registro de creación de usuarios.
 
 | Campo           | Tipo         | Restricciones                     |
 |----------------|--------------|----------------------------------|
